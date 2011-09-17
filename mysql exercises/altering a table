@@ -1,0 +1,51 @@
+CREATE TABLE testing_table (
+name CHAR( 20 ) NOT NULL ,
+contact_name VARCHAR( 20 ) NOT NULL ,
+roll_no VARCHAR( 20 ) NOT NULL       //for creating the table
+) 
+
+
+alter table testing_table drop column name;  //for deleting column from the table
+
+
+
+alter table testing_table change contact_name username varchar(20);    //for renaming
+
+
+
+mysql> alter table testing_table add column first_name varchar(20) not null;
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table testing_table add column last_name varchar(20) not null;
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show create table testing_table;
++---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table         | Create Table                                                                                                                                                                                                           |
++---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| testing_table | CREATE TABLE `testing_table` (
+  `username` varchar(20) DEFAULT NULL,
+  `roll_no` varchar(20) NOT NULL,
+  `first_name` varchar(20) NOT NULL,
+  `last_name` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 |
++---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> alter table testing_table modify roll_no int;
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show create table testing_table;
++---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table         | Create Table                                                                                                                                                                                                           |
++---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| testing_table | CREATE TABLE `testing_table` (
+  `username` varchar(20) DEFAULT NULL,
+  `roll_no` int(11) DEFAULT NULL,
+  `first_name` varchar(20) NOT NULL,
+  `last_name` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 |
+

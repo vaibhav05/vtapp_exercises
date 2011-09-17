@@ -1,0 +1,120 @@
+ques-1..As per diagram given in question
+Part..
+
+2.1--select location from sandwitch where filling IN(select filling from taste where name='james');
+
+2.2=-select sandwitch.location from taste inner join sandwitch on taste.filling=sandwitch.filling where name='james';
+
+
+2.3--select sandwitch.location,count(distinct name) from taste inner join sandwitch on taste.filling=sandwitch.filling group by location;
+
+ques1,..part 3------------
+mysql> INSERT INTO `exercise13`.`holdings` (`branch`, `title`, `copies`) VALUES ('b1', 'how to', '2');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO `exercise13`.`holdings` (`branch`, `title`, `copies`) VALUES ('b1', 'a hist', '1');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO `exercise13`.`holdings` (`branch`, `title`, `copies`) VALUES ('b2', 'how to', '4');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO `exercise13`.`holdings` (`branch`, `title`, `copies`) VALUES ('b2', 'computers', '2');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO `exercise13`.`holdings` (`branch`, `title`, `copies`) VALUES ('b2', 'the wife', '3');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO `exercise13`.`holdings` (`branch`, `title`, `copies`) VALUES ('b3', 'a hist', '1');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO `exercise13`.`holdings` (`branch`, `title`, `copies`) VALUES ('b3', 'computer', '4');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO `exercise13`.`holdings` (`branch`, `title`, `copies`) VALUES ('b3', 'susannah', '3');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO `exercise13`.`holdings` (`branch`, `title`, `copies`) VALUES ('b3', 'the wife', '1');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from exercise13.holdings;
++--------+-----------+--------+
+| branch | title     | copies |
++--------+-----------+--------+
+| b1     | susannah  |      3 |
+|        |           |      0 |
+| b1     | how to    |      2 |
+| b1     | a hist    |      1 |
+| b2     | how to    |      4 |
+| b2     | computers |      2 |
+| b2     | the wife  |      3 |
+| b3     | a hist    |      1 |
+| b3     | computer  |      4 |
+| b3     | susannah  |      3 |
+| b3     | the wife  |      1 |
++--------+-----------+--------+
+11 rows in set (0.00 sec)
+
+mysql> delete * from exercise13.holding where copies=0;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from exercise13.holding where copies=0' at line 1
+mysql> delete from exercise13.holding where copies=0;
+ERROR 1146 (42S02): Table 'exercise13.holding' doesn't exist
+mysql> delete from exercise13.holdings where copies=0;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from exercise13.holdings;
++--------+-----------+--------+
+| branch | title     | copies |
++--------+-----------+--------+
+| b1     | susannah  |      3 |
+| b1     | how to    |      2 |
+| b1     | a hist    |      1 |
+| b2     | how to    |      4 |
+| b2     | computers |      2 |
+| b2     | the wife  |      3 |
+| b3     | a hist    |      1 |
+| b3     | computer  |      4 |
+| b3     | susannah  |      3 |
+| b3     | the wife  |      1 |
++--------+-----------+--------+
+10 rows in set (0.00 sec)
+
+mysql> INSERT INTO `exercise13`.`titles` (`title`, `author`, `publisher`) VALUES ('how to', 'amy fly', 'stop press');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO `exercise13`.`titles` (`title`, `author`, `publisher`) VALUES ('a hist', 'david little', 'wiley');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO `exercise13`.`titles` (`title`, `author`, `publisher`) VALUES ('computer', 'blaise pascal', 'applewoods');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO `exercise13`.`titles` (`title`, `author`, `publisher`) VALUES ('the wife', 'ann brown', 'macmillan');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from exercise.titles;
+ERROR 1146 (42S02): Table 'exercise.titles' doesn't exist
+mysql> select * from exercise13.titles;
++----------+---------------+------------+
+| title    | author        | publisher  |
++----------+---------------+------------+
+| susannah | ann brown     | macmillan  |
+| how to   | amy fly       | stop press |
+| a hist   | david little  | wiley      |
+| computer | blaise pascal | applewoods |
+| the wife | ann brown     | macmillan  |
++----------+---------------+------------+
+5 rows in set (0.00 sec)
+
+
+
+//***Query
+
+1.3.1--select title from titles  where publisher='macmillan';
+
+1.3.2-- select distinct(branch) from holdings where title in(select title from titles where author='ann brown');
+
+1.3.3--select distinct(h.branch) from titles inner join holdings as h on h.title=titles.title where titles.author='ann brown';
+
+
+1.3.4--select sum(copies) from holdings group by branch;
+
+

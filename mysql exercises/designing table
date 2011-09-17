@@ -1,0 +1,32 @@
+ CREATE TABLE `article` (
+  `article` text NOT NULL,
+  `comment` text NOT NULL,
+  `user` varchar(20) NOT NULL
+) ;
+
+
+CREATE TABLE `upload` (
+  `user` varchar(20) NOT NULL,
+  `article` text NOT NULL,
+  `category` text NOT NULL,
+  `user_type` varchar(20) NOT NULL
+)
+
+ select * from article;
++----------------------------------------------+------------+---------+
+| article                                      | comment    | user    |
++----------------------------------------------+------------+---------+
+| i m writing about today's marker             | nice lines | ram     |
+| i m going to write about multi-player event. | good       | vaibhav |
+| i m going to write about multi-player event. | superb     | vaibhav |
++--------------------------
+
+
+
+select * from upload;
++---------+----------------------------------------------+---------------+-----------+
+| user    | article                                      | category      | user_type |
++---------+----------------------------------------------+---------------+-----------+
+| vaibhav | i m writing about today's marker             | business      | normal    |
+| ram     | i m going to write about multi-player event. | entertainment | normal    |
+
