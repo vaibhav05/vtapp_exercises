@@ -2,19 +2,15 @@
 mysqldump -u root -p google > file.sql
 
 
-
-drop database google;
-Query OK, 10 rows affected (0.17 sec)
-
 //**for recovery
 
 
-create database google;
+create database restored;
 Query OK, 1 row affected (0.00 sec)
 
 mysql> exit
 Bye
-vaibhav@vaibhav-P52F:~$ mysql -u root -p google < file.sql
+vaibhav@vaibhav-P52F:~$ mysql -u root -p restored < file.sql
 Enter password: 
 mysql> show databases;
 +--------------------+
@@ -25,7 +21,7 @@ mysql> show databases;
 | exercise13         |
 | exercise2          |
 | google             |
-| main               |
+| restored           |
 | mysql              |
 | phpmyadmin         |
 | test               |

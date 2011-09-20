@@ -1,13 +1,9 @@
 question 2-------------
 
-mysql> create user 'vtapp_user' identified by password 'password(mypass)';
-Query OK, 0 rows affected (0.00 sec)
+mysql> create user 'vtapp_user' identified by 'mypass';
+Query OK, 0 rows affected (0.00 sec) 
 
-mysql> grant usage on vtapp to vtapp_user;
-ERROR 1146 (42S02): Table 'mysql.vtapp' doesn't exist
 mysql> use vtapp;
 Database changed
-mysql> grant usage on vtapp to vtapp_user;
-ERROR 1146 (42S02): Table 'vtapp.vtapp' doesn't exist
 mysql> grant usage on vtapp.* to vtapp_user;
 Query OK, 0 rows affected (0.00 sec)
