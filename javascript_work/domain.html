@@ -1,0 +1,54 @@
+<!---Create a form with a textfield. When I enter a domain or subdomain in the box and submit the form. it should alert the subdomain if exists and the alert the domain name.--->
+
+
+<html>
+<head>
+<script>
+function check(){
+d=document.getElementById("number").value;
+var d = d.split(/\./g);
+m=d.length;
+if(m>2)
+{
+alert("the domain is:"+" "+d[m-2]+"."+d[m-1]);
+}
+else
+{
+var t = d[0].split(/\/\//g);
+d[0]=t[1];
+alert("the domain is:"+" "+d[m-2]+"."+d[m-1]);
+}
+
+var t = d[0].split(/\/\//g);
+if(t[0]!=d[0])
+{
+d[0]=t[1];
+}
+if(d[0]=="www")
+{
+msg="the subdomain is:";
+for(i=1;i<m-2;i++)
+{
+msg+=" "+d[i]+".";
+}
+alert(msg);
+}
+else
+{
+msg="the subdomain is:";
+for(i=0;i<m-2;i++)
+{
+msg+=" "+d[i]+".";
+}
+alert(msg);
+}
+}
+</script>
+</head>
+<body>
+<form action="" method="get">
+<p>Enter domain/subdomain:</p><input id="number" name="Login" class="input" type="text" /><br/>
+<input id="itxt" type="submit" value="Submit" onClick="check()" />
+</form>
+</body>
+</html>

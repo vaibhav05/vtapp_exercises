@@ -1,0 +1,24 @@
+<!---Write a Script that prompt you for a URL. If the put an empty url it should alert you. Otherwise it should open that URL in a new window of width 400px and height 450px, without any type of bar.-->
+
+
+<html>
+<head>
+<title>JS</title>
+<script type="text/javascript">
+function fun()
+{
+var r=prompt("Enter a URL","example.com");
+if(r=="" || r==" ")
+{
+alert("not a valid url");
+}
+else
+{
+window.open(r,"target=_blank","width=400px,height=450px");
+}
+};
+</script>
+</head>
+<body onLoad="fun()">
+</body>
+</html>

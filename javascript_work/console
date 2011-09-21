@@ -1,0 +1,27 @@
+
+<! changing the image, link and form of given website to different image, vinsol url-->
+
+
+
+/*a=document.getElementsByTagName("img");
+len=a.length;
+console.log(len);
+for(i=0;i<len;i++){
+a[i].src="http://avatar.ibcdn.com/avatar/baad3037-9c9c-0b3d-0f06-b446ee592fc8/200.jpg";
+}*/
+/*b=document.getElementsByTagName("a")
+c=b.length;
+console.log(c);
+for(i=0;i<c;i++){
+b[i].href="http://www.vinsol.com";
+}*/
+d=document.getElementsByTagName("form");
+e=d.length;
+console.log(e);
+/*for running in address bar
+javascript: a=document.getElementsByTagName("img");
+len=a.length;
+console.log(len);
+for(i=0;i<len;i++){
+a[i].src="http://avatar.ibcdn.com/avatar/baad3037-9c9c-0b3d-0f06-b446ee592fc8/200.jpg";
+};void(0);

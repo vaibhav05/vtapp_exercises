@@ -1,0 +1,44 @@
+#header
+{
+margin:0 auto;
+width:520px;
+height:30px;
+background-color:#006400;
+text-align:center;
+}
+#rest
+{
+margin:0 auto;
+padding-top:30px;
+width:500px;
+background-color:#87CEEB;
+height:auto;
+border-bottom: 2px solid #99cccc;
+border-top: 2px solid #99cccc;
+position:relative;
+line-height:30px;
+padding-left:20px;
+}
+.input
+{
+border:1px solid #3399ff;
+position:absolute;
+left:200px;
+}
+#container
+{
+margin:0 auto;
+width:530px;
+height:auto;
+}
+#itxt
+{
+border:1px solid #3399ff;
+margin-left:200px;
+}
+#txt
+{
+width:400px;
+height:100px;
+border:1px solid black;
+}

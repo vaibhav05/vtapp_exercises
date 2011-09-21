@@ -1,0 +1,44 @@
+<!---Create a list of checkbox (red, green, yellow, white, black). Now create to links "Check all" and 'none'. When you click on check all link all checkbox will be selected, and when you click on none link all checkbox will be deselected--->
+
+
+<html>
+<head>
+<title>js-html1</title>
+<script type="text/javascript">
+function fun(p)
+{
+var r=document.getElementsByTagName('input');
+for(i=0;i<r.length;i++)
+{
+if(p==0)
+{
+	if(r[i].checked==true)
+		{
+		continue;
+		}
+	else{r[i].checked=true;}
+}
+else
+{
+	if(r[i].checked==false)
+	{
+	continue;
+	}
+	else{r[i].checked=false;}
+}
+}
+}
+</script>
+<style="text/css">
+</style>
+</head>
+<body>
+<div>
+
+<input type="checkbox" >Red</input><br/>
+<input type="checkbox" >Blue</input><br/>
+<input type="checkbox" >Green</input><br/>
+<input type="checkbox" >Yellow</input><br/>
+<span onClick="fun(0)"><a href="#">Check All</a></span>&nbsp;<span onClick="fun(1)"><a href="#">Check None</a></span>
+</body>
+</html>

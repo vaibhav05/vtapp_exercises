@@ -1,0 +1,67 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="js.css"/>
+<script type="text/javascript">
+function check()
+{ 
+if ( document.myForm.Login.value == "" )
+    {
+        alert ( "Please fill in the Login Id box." );
+        valid = false;
+    }
+if ( document.myForm.Email.value == "" )
+    {
+        alert ( "Please fill in the Email box." );
+        valid = false;
+    }
+if ( document.myForm.Name.value == "" )
+    {
+        alert ( "Please fill in the Name box." );
+        valid = false;
+    }
+if ( document.myForm.Home.value == "" )
+    {
+        alert ( "Please fill in the Home Page box." );
+        valid = false;
+    }
+x=document.getElementById("txt");
+a=x.value;
+if(a.length<50)
+{
+alert("About Me should be more than 50 character");
+valid= false;
+}
+x=document.getElementById("chk");
+if ( x.checked)
+    {
+        r=confirm( "Receive Notification." );
+if (r==true)
+  {
+  alert("You will get notification");
+  }
+else
+  {
+  x.checked=false;
+  }
+        valid = true;
+    }
+}
+</script>
+</head>
+<body>
+<div id="container">
+<div id="header"><p style="text-align:center;">Registration Form</p></div>
+<div id="rest"><form name="myForm" method="post">
+Login Id:<input name="Login" class="input" type="text" /><br/>
+Email:<input name="Email" class="input" type="text" /><br/>
+Name:<input name="Name" class="input" type="text" /><br/>
+Time Zone:<select class="input" style="width:146px;"><option>GMT</option><option>IST</option><option>NST</option><option>CST</option></select><br/>
+Home Page:<input name="Home" class="input" type="text" /><br/>
+About Me:</br><textarea id="txt"></textarea><br/>
+<input id="chk" class="check" type="checkbox"/><span id="check_txt">Receive Notification of Comments</span><br/>
+You will be sent an email when someone posts comment to your blog or your album</span><br/>
+<p style="text-align:center;">Your password will be mailed to you</p><br/>
+<input id="itxt" type="button" value="Go" onClick="check()"/>
+</div>
+</body>
+</html>

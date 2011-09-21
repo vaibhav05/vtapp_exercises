@@ -1,0 +1,23 @@
+<!---Create a HTML page, when it opens in Browser, it should prompt twice. Once for first name and second for last name. When you enter first and last name, it should alert you as "Hello firstname lastname."
+
+After alert it should put that text in html page---->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>JS-HTMLEx2</title>
+<script type="text/javascript">
+function show_prom()
+{
+var r=prompt("Enter First Name","Hey Anonymous");
+var p=prompt("Enter Last Name","Hey Anonymous whats your last name");
+alert("Welcome "+r+" "+p);
+}
+</script>
+</head>
+<body onLoad="show_prom();">
+
+</body>
+</html>

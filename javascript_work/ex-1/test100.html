@@ -1,0 +1,31 @@
+<!--opening of a popup window by a click and close it by clicking link which is not visible before-->
+
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="test100.css"/>
+<script type="text/javascript">
+function clicklink()
+{
+window.open ("http://www.javascript-coder.com","mywindow","height=500,width=500,screenX=400px,screenY=400px,top=400px,scrollbars=yes");
+document.getElementById("close").style.display='block';
+}
+function closepopup()
+   {	
+      if(false == mywindow.closed)
+      {
+         mywindow.close ();
+      }
+      else
+      {
+         alert('Window already closed!');
+      }
+   }
+</script>
+</head>
+<body>
+<p>this is something for us</p>
+<a href="#" onClick="clicklink()">myname</a></br>
+<a id="close" href="#" onClick="closepopup()">Close the Popup Window</a>
+</body>
+</html>

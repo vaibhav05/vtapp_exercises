@@ -1,0 +1,21 @@
+<!---Create a form with two textfields labeled "Enter Number" and "Result". When I enter something in first textfield and submit the form, it should write true in second textfield if entered value is numeric otherwise false. Also if entered value is not numeric, form should not be submitted --->
+
+<html>
+<head>
+<script>
+function check()
+{
+x=document.getElementById("number").value;
+y=document.getElementById("result");
+return y.value=(!isNaN(x));
+}
+</script>
+</head>
+<body>
+<form action="res.html" method="get">
+<p>Enter number:</p><input id="number" name="Login" class="input" type="text" /><br/>
+<p>Result:</p><input id="result" name="Login" class="input" type="text" /><br/>
+<input id="itxt" type="submit" value="Submit" onClick="return check()" />
+</form>
+</body>
+</html>
