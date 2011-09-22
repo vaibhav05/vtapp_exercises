@@ -1,0 +1,114 @@
+1.A....create database vtapp;
+
+1.B....grant usage on vtapp to 'vtapp_user' identified by 'passwd';
+
+1.C....mysql> Create table cinemas( id int(11) not null auto_increment, primary key(id), name varchar(128) not null, email varchar(64) not null, website varchar(128), created_at datetime, updated_at datetime);
+Query OK, 0 rows affected (0.11 sec)
+
+
+1.D...insert into cinemas (name,email,website,created_at,updated_at) values('PVR Saket','saket@pvr.com','www.pvr.com',now(),now());
+      insert into cinemas (name,email,website,created_at,updated_at) values('PVR Rivoli','rivoli@pvr.com','www.pvr.com',now(),now());
+      insert into cinemas (name,email,created_at,updated_at) values('Chanakya','chanakyacinema@mailinator.com',now(),now());
+      insert into cinemas (name,email,website,created_at,updated_at) values('om Cine Plex','omcineplex@mailinator.com','omcineplex.com',now(),now());
+      insert into cinemas (name,email,website,created_at,updated_at) values('IMAX','imax@imax.com','imax.com',now(),now());
+      insert into cinemas (name,email,created_at,updated_at) values('Shakuntalam','shakuntalam@pragatimaidan.com',now(),now());
+
+1.E...mysql> Create table movies( id int(11) not null auto_increment, primary key(id), name varchar(128) not null, language varchar(32) not null, starcast varchar(128) not null, created_at datetime, updated_at datetime);
+Query OK, 0 rows affected (0.12 sec)
+
+1.F... insert into movies(name,language,starcast,created_at,updated_at) values ('Kung Fu Panda 2','English','"Jack Black,Jackie Chan,Lucy Liu"',now(),now());
+       insert into movies(name,language,starcast,created_at,updated_at) values ('Kung Fu Panda 2','Hindi','"Jack Black,Jackie Chan,Lucy Liu"',now(),now());
+       insert into movies(name,language,starcast,created_at,updated_at) values ('Kung Fu Panda','Hindi','"Jack Black,Jackie Chan,Lucy Liu"',now(),now());
+       insert into movies(name,language,created_at,updated_at) values ('I Am Kalam','Hindi',now(),now());
+       insert into movies(name,language,starcast,created_at,updated_at) values ('Rango','Hindi','Johnny Depp',now(),now());
+       insert into movies(name,language,starcast,created_at,updated_at) values ('Megamind','Hindi','Brad Pitt',now(),now());
+       insert into movies(name,language,starcast,created_at,updated_at) values ('Aarakshan','Hindi','Saif Ali Khan',now(),now());
+
+
+1.G... Create table cinema_movies( id int(11) not null auto_increment, primary key(id), cinema_id int(11) not null, movie_id int(11) not null, start_date date, end_date date,foreign key(cinema_id) references cinemas(id),foreign key(movie_id) references movies(id));
+
+1.H... Alter table cinema_movies add foreign key(cinema_id) references cinemas(id);
+'
+
+1.I..insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (1,1,'2011-09-05','2011-09-20');
+     insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (1,2,'2011-09-06','2011-09-23'); 
+     insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (1,5,'2011-08-31','2011-09-30'); 
+     insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (2,1,'2011-09-02','2011-09-20');
+     insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (2,3,'2011-09-06','2011-09-10');
+     insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (2,5,'2011-08-31','2011-09-30');
+     insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (3,4,'2011-10-02','2011-10-20');
+     insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (3,7,'2011-09-06','2011-10-22');
+     insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (3,6,'2011-09-08','2011-09-18');
+     insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (4,8,'2011-10-02','2011-10-10'); 
+     insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (4,4,'2011-10-02','2011-10-20');
+     insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (4,7,'2011-09-06','2011-10-22');
+     insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (5,8,'2011-10-05','2011-10-20');
+     insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (5,6,'2011-10-05','2011-10-20');
+     insert into cinema_movies(cinema_id,movie_id,start_date,end_date) values (5,5,'2011-10-05','2011-10-20');
+
+
+1.J... create table movie_shows(
+        id int(11) not null,
+        cinema_movie_id int(11) not null,
+        start_time time,
+        end_time time);
+
+1.K... insert into movie_shows values(1,11,'09:00:00','10:00:00');
+
+
+//*******Queries
+
+2.A... select start_time from movie_shows;
+
+
+2.B... select concat(name,'(',language,')') from movies;
+
+2.C... select distinct name from cinema inner join (select cinema_id, max(end_date),movie_id from cinema_movies group by movie_id) as P on cinemas.id=P.cinema_id
+        OUTER JOIN 
+       select distinct name from movie inner join (select cinema_id,max(end_date),movie_id from cinema_movies group by movie_id) as P on movies.id=P.movie_id;
+
+2.D...select name from cinema where cinema_id in(select cinema_id from cinema_movies where start_date<'2011-09-20' and end_date>'2011-10-20' and movie_id in(select movie_id from movie where name='Kung Fu Panda';
+
+
+2.F...select distinct name from cinemas where id in(select cinema_id from movie_show where end_time>now());
+
+
+2.G...select name from movie where id in(select movie_id, max(end_date),from movie_show where cinema_id in(select id from cinema where name=""));
+
+2.H...select movie_name from movie inner join (select movie_id,count(*) from cinema_movies group by movie_id order by count limit 1) as P on movie.id=P.movie_id;
+
+2.I...select cinema.name from cinema inner join (select cinema_id,count(*) from cinema_movies group by cinema_id order by count(*) limit 1) as Q on cinema.id=Q.cinema_id;
+
+
+2.J... select P.name from movie as P inner join movie as Q on P.name=Q.name and P.language<>Q.language;
+
+
+2.K... select name from movies having name like '%ung%';
+
+2.L... select name from cinemas having email like '%et%';
+
+
+
+3.A... rename table cinemas to listing;
+
+3.B... CREATE INDEX ind ON cinemas (name(128));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
